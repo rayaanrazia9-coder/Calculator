@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 const expressionDisplay = document.getElementById("expression");
 const resultDisplay = document.getElementById("result");
 const previousCalculationDisplay = document.getElementById("previousCalculation");
@@ -462,6 +461,3 @@ function clearHistoryPanelAndMenu() {
 
 // Set the initial history display
 renderHistory();
-=======
-
->>>>>>> a028ebd9546b89360e0f8fb4f984b536d38edb65
