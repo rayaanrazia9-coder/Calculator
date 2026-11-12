@@ -1,1 +1,99 @@
+<<<<<<< HEAD
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="calculator">
 
+    <div class="top-bar">
+    <button class="top-icon" id="historyBtn"
+            aria-label="Calculation history" title="History">
+        ◷
+    </button>
+
+    <button class="top-icon" id="themeToggle"
+            aria-label="Switch theme" title="Change theme">
+        <span id="themeIcon">☀</span>
+    </button>
+
+    <button class="top-icon" id="menuBtn"
+            aria-label="More options" title="More options">
+        ⋮
+    </button>
+</div>
+
+
+        <section class="display">
+            <div id="previousCalculation"></div>
+            <div id="expression"></div>
+
+            <div class="result-line">
+                <div id="result">0</div>
+            </div>
+        </section>
+
+        <section class="keypad">
+
+            <button class="utility" data-action="clear">C</button>
+            <button class="utility" data-action="backspace" aria-label="Backspace">⌫</button>
+            <button class="operator" data-value="÷">/</button>
+            <button class="operator" data-value="×">*</button>
+
+            <button data-value="7">7</button>
+            <button data-value="8">8</button>
+            <button data-value="9">9</button>
+            <button class="operator" data-value="−">−</button>
+
+            <button data-value="4">4</button>
+            <button data-value="5">5</button>
+            <button data-value="6">6</button>
+            <button class="operator plus" data-value="+">+</button>
+
+            <button data-value="1">1</button>
+            <button data-value="2">2</button>
+            <button data-value="3">3</button>
+
+            <button class="swap" data-action="sign" aria-label="Change sign">±</button>
+            <button data-value="0">0</button>
+            <button data-value=".">.</button>
+            <button class="equals" data-action="calculate">=</button>
+
+        </section>
+
+        <p id="message" aria-live="polite"></p>
+
+    </main>
+
+
+<div class="panel-overlay" id="panelOverlay"></div>
+
+<aside class="history-panel" id="historyPanel" aria-hidden="true">
+    <div class="panel-header">
+        <h2>History</h2>
+        <button id="closeHistory" aria-label="Close history">&times;</button>
+    </div>
+
+    <button id="clearHistory" class="clear-history">Clear history</button>
+
+    <div id="historyList">
+        <p class="empty-history">Your calculations will appear here.</p>
+    </div>
+</aside>
+
+<div class="menu-popup" id="menuPopup" hidden>
+    <button id="menuClearHistory">Clear history</button>
+    <button id="menuAbout">About calculator</button>
+</div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
+=======
+
+>>>>>>> a028ebd9546b89360e0f8fb4f984b536d38edb65

@@ -1,1 +1,483 @@
+<<<<<<< HEAD
+* {
+    box-sizing: border-box;
+}
 
+:root {
+    --page: #b8f7b5;
+    --circle: #168b35;
+    --calculator: #f5f7f9;
+    --button: #ffffff;
+    --text: #42464b;
+    --muted: #858c92;
+    --green: #159e55;
+    --green-dark: #087b38;
+    --utility: #ffffff;
+    --shadow-light: #ffffff;
+    --shadow-dark: #dfe3e8;
+    --border: #edf0f2;
+}
+
+body.dark {
+    --calculator: #171a1b;
+    --button: #292d30;
+    --text: #f2f4f5;
+    --muted: #9ba1a5;
+    --green: #009a4b;
+    --green-dark: #006b32;
+    --utility: #626568;
+    --shadow-light: #303437;
+    --shadow-dark: #101213;
+    --border: #25292b;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow-x: hidden;
+    background: var(--page);
+    font-family: Arial, Helvetica, sans-serif;
+    transition: background 0.3s ease;
+}
+
+
+.calculator {
+    position: relative;
+    z-index: 1;
+    width: 300px;
+    min-height: auto;
+    padding: 15px;
+    border-radius: 36px;
+    background: var(--calculator);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.14);
+    display: flex;
+    flex-direction: column;
+    transition: background 0.3s ease;
+}
+
+.top-bar {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    align-items: center;
+    justify-items: center;
+    min-height: 35px;
+}
+
+.top-icon {
+    border: none;
+    background: transparent;
+    color: var(--text);
+    font-size: 22px;
+    cursor: pointer;
+    padding: 3px 7px;
+}
+
+.view-button {
+    width: 25px;
+    height: 25px;
+    border: none;
+    border-radius: 6px;
+    background: var(--green);
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#themeToggle {
+    font-size: 21px;
+}
+.display {
+    min-height: 130px;
+    padding: 18px 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    text-align: right;
+    overflow: hidden;
+}
+
+#expression {
+    min-height: 25px;
+    color: var(--muted);
+    font-size: 16px;
+    overflow-wrap: anywhere;
+}
+
+.result-line {
+    display: flex;
+    align-items: baseline;
+    justify-content: flex-end;
+    gap: 7px;
+    color: var(--text);
+    font-size: 36px;
+    font-weight: bold;
+}
+
+.result-line > span {
+    font-size: 32px;
+}
+
+#result {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+}
+
+.keypad {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-rows: repeat(5, 48px);
+    gap: 8px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    position: relative;
+}
+
+.keypad::before {
+    content: "";
+    position: absolute;
+    width: 52px;
+    height: 4px;
+    border-radius: 10px;
+    background: var(--muted);
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.keypad button {
+    min-width: 0;
+    border: 1px solid var(--border);
+    border-radius: 17px;
+    background: var(--button);
+    color: var(--text);
+    font-size: 22px;
+    font-weight: 500;
+    cursor: pointer;
+    box-shadow:
+        3px 4px 8px var(--shadow-dark),
+        -2px -2px 6px var(--shadow-light);
+    transition: transform 0.15s ease, background 0.2s ease;
+}
+
+.keypad button:hover {
+    filter: brightness(0.97);
+}
+
+.keypad button:active {
+    transform: scale(0.94);
+    box-shadow: inset 2px 2px 4px var(--shadow-dark);
+}
+
+.keypad .utility {
+    background: var(--utility);
+    color: var(--muted);
+    font-size: 21px;
+}
+
+.keypad .operator {
+    background: var(--green);
+    color: white;
+    border-color: transparent;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.keypad .operator,
+.keypad .equals {
+    border-radius: 17px;
+}
+
+.keypad .operator:hover {
+    background: var(--green-dark);
+}
+
+.keypad .plus {
+    grid-column: 4;
+    grid-row: 3 / 5;
+    height: auto;
+}
+
+.keypad .equals {
+    grid-column: 4;
+    grid-row: 5;
+    background: var(--green);
+    color: white;
+    border-color: transparent;
+    font-size: 28px;
+    font-weight: bold;
+    box-shadow: 0 5px 12px rgba(0, 130, 60, 0.22);
+}
+
+.keypad .equals:hover {
+    background: var(--green-dark);
+}
+
+.keypad .swap {
+    color: var(--green);
+    font-size: 24px;
+    font-weight: bold;
+}
+
+#message {
+    min-height: 12px;
+    margin: 7px 0 0;
+    text-align: center;
+    color: var(--muted);
+    font-size: 10px;
+}
+
+
+@media (max-width: 380px) {
+    body {
+        padding: 10px;
+    }
+
+    .calculator {
+        width: 100%;
+        max-width: 300px;
+        min-height: auto;
+        padding: 14px;
+    }
+
+    .display {
+    min-height: 130px;
+    padding: 18px 5px;
+}
+
+    .keypad {
+        grid-template-rows: repeat(5, 45px);
+        gap: 7px;
+    }
+
+    .keypad button {
+        font-size: 20px;
+    }
+
+    .result-line {
+        font-size: 30px;
+    }
+
+    .result-line > span {
+        font-size: 27px;
+    }
+}
+
+
+@media (max-height: 750px) {
+    body {
+        padding-top: 8px;
+        padding-bottom: 8px;
+    }
+
+    .calculator {
+        padding: 15px;
+    }
+
+    .display {
+        min-height: 130px;
+        padding: 18px 5px;
+    }
+
+    .keypad {
+        grid-template-rows: repeat(5, 48px);
+        gap: 8px;
+        padding-top: 20px;
+    }
+
+    #message {
+        margin-top: 4px;
+        min-height: 0;
+    }
+}
+
+
+
+/* Top bar */
+.top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 42px;
+    margin-bottom: 5px;
+    position: relative;
+}
+
+.top-icon {
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 50%;
+    background: transparent;
+    color: var(--text);
+    font-size: 25px;
+    cursor: pointer;
+    box-shadow: none;
+}
+
+.top-icon:hover {
+    background: var(--border);
+}
+
+.top-icon:active {
+    transform: scale(0.92);
+}
+
+/* Side panel background overlay */
+.panel-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+    z-index: 99;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.25s ease;
+}
+
+.panel-overlay.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* History side panel */
+
+.history-panel {
+    position: fixed;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%) translateX(120%);
+
+    width: min(300px, calc(100vw - 40px));
+    height: auto;
+    max-height: 75vh;
+    padding: 18px;
+
+    background: var(--calculator);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 28px;
+
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    z-index: 100;
+
+    overflow-y: auto;
+    transition: transform 0.25s ease;
+}
+
+.history-panel.open {
+    transform: translateY(-50%) translateX(0);
+}
+
+
+.panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.panel-header h2 {
+    margin: 0;
+    font-size: 23px;
+}
+
+#closeHistory {
+    border: none;
+    background: transparent;
+    color: var(--text);
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.clear-history {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--button);
+    color: var(--text);
+    cursor: pointer;
+}
+
+.history-item {
+    padding: 13px 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+    overflow-wrap: anywhere;
+}
+
+.history-expression {
+    color: var(--muted);
+    font-size: 13px;
+    margin-bottom: 5px;
+}
+
+.history-result {
+    color: var(--text);
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.empty-history {
+    color: var(--muted);
+    font-size: 14px;
+    text-align: center;
+    margin-top: 35px;
+}
+
+/* Three-dot menu */
+.menu-popup {
+    position: fixed;
+    z-index: 110;
+    top: 65px;
+    right: max(20px, calc((100vw - 340px) / 2));
+    width: 190px;
+    padding: 7px;
+    border: 1px solid var(--border);
+    border-radius: 13px;
+    background: var(--calculator);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.16);
+}
+
+.menu-popup[hidden] {
+    display: none;
+}
+
+.menu-popup button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+    color: var(--text);
+    text-align: left;
+    font-size: 14px;
+    cursor: pointer;
+    box-shadow: none;
+}
+
+.menu-popup button:hover {
+    background: var(--border);
+}
+
+
+#previousCalculation {
+    min-height: 20px;
+    font-size: 13px;
+    color: #888;
+    text-align: right;
+    margin-bottom: 8px;
+}
+=======
+
+>>>>>>> a028ebd9546b89360e0f8fb4f984b536d38edb65
